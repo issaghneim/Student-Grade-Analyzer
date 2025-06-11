@@ -1,0 +1,38 @@
+students = []
+grades = []
+num_students = int(input("Enter the number of students: "))
+for i in range(num_students):
+    name = input("Enter student name: ")
+    grade = float(input(f"Enter grade for {name} (out of 100): "))
+    students.append(name)
+    grades.append(grade)
+
+
+
+def display_student_summary(students, grades):
+    print("\nStudents and Grades")
+    for i in range(len(students)):
+        print(f"{students[i]}: {grades[i]}")
+
+def get_avg_grade(grades):
+    return sum(grades) / len(grades)
+
+def get_highest_grade(students, grades):
+    max_grade = max(grades)
+    index = grades.index(max_grade)
+    return students[index], max_grade
+
+def count_passed(grades):
+    count = 0
+    for grade in grades:
+        if grade >= 60:
+            count += 1
+    return count
+
+display_student_summary(students, grades)
+avg = get_avg_grade(grades)
+print(f"\nClass Average Grade: {avg:.2f}")
+top_student, top_grade = get_highest_grade(students, grades)
+print(f"Highest Grade: {top_student} : {top_grade}")
+passed_count = count_passed(grades)
+print(f"Number of Students Passed : {passed_count}")
